@@ -1,0 +1,14 @@
+﻿ 
+ 
+ $.smallBox({
+	title : "<%= t(:mailbox, scope: 'modules') %>",
+	content : "<%= t(:inbox_emptied_message) %>",
+	color : "#4c4f53",
+	iconSmall : "fa fa-envelope-o bounce animated",
+	timeout : 2000,
+	sound: false
+});
+ 
+
+loadURL('<%= mailbox_inbox_path %>',  $(".ajax-notifications"));
+

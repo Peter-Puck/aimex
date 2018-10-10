@@ -1,0 +1,58 @@
+<% content_for :html_id, "extr-page" %>
+<% content_for :body_class, "animated fadeInDown" %>
+<% content_for :top_right do %>
+<span id="extr-page-header-space">
+  <span id="extr-page-header-space">
+    <span class="hidden-mobile hiddex-xs">Already registered?</span>
+    <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-danger' %>
+  </span>
+  <% end %>
+  <!-- MAIN CONTENT -->
+  <div id="content" class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+        <h1 class="txt-color-red login-header-big"></h1>
+        <div class="hero">
+          <%= devise_error_messages! %>
+
+        </div>
+
+
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+        <div class="well no-padding">
+
+          <%= simple_form_for(@user, html: { method: :post, class: "smart-form client-form" }) do |f| %>
+
+
+
+            <header>
+              Create Account
+            </header>
+          <div class="field">
+
+            <%= f.input :first_name, input_html: { class: "required"}, :autofocus => true %>
+            <%= f.input :last_name, input_html: { class: "required"} %>
+            <%= f.input :email, input_html: { class: "required"} %>
+            <%= f.input :password, input_html: { class: "required"} %>
+
+
+
+          </div>
+
+
+
+            <footer>
+              <%= f.button :submit, "Register", class: "btn btn-primary" %>
+            </footer>
+          <% end %>
+
+        </div>
+
+
+
+    </div>
+</div>
+</div>

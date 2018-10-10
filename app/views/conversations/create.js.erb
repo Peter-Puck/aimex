@@ -1,0 +1,36 @@
+﻿ $.smallBox({
+	title : "<%= t(:mailbox, scope: 'modules') %>",
+	content : "<%= t(:sent_message) %>",
+	color : "#4c4f53",
+	iconSmall : "fa fa-envelope-o bounce animated",
+	timeout : 2000,
+	sound: false
+});
+ 
+ 
+ var activeClass = '';
+                  if (document.getElementById("Inbox").parentElement.className == 'btn btn-default active'){
+                    activeClass = 'Inbox'
+                    document.getElementById("Inbox").value = "<%= mailbox_inbox_path %>";
+                    loadURL('<%= mailbox_inbox_path %>',  $(".ajax-notifications"));
+                  }
+                  else if (document.getElementById("Trash").parentElement.className == 'btn btn-default active'){
+                    activeClass = 'Trash'
+                    document.getElementById("Trash").value = "<%= mailbox_trash_path %>";
+                    loadURL('<%= mailbox_trash_path %>',  $(".ajax-notifications"));
+                  }
+                  else if (document.getElementById("Sent").parentElement.className == 'btn btn-default active'){
+                    activeClass = 'Sent'
+                    document.getElementById("Sent").value = "<%= mailbox_sent_path %>";
+                    loadURL('<%= mailbox_sent_path %>',  $(".ajax-notifications"));
+                  }
+                  if (activeClass != ''){
+                    document.getElementById(activeClass).value = newPath;
+                  }
+                  if (newPath != ''){
+                    loadURL(newPath,  $(".ajax-notifications"));
+                  }
+                  activeClass = ''
+                  document.getElementById("Inbox").value = "<%= mailbox_inbox_path %>";
+                  document.getElementById("Trash").value = "<%= mailbox_trash_path %>";
+                  document.getElementById("Sent").value = "<%= mailbox_sent_path %>";

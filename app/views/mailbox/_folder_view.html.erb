@@ -1,0 +1,31 @@
+
+<div class="widget-body no-padding">
+         
+    <div class="bottom-buffer">
+
+                <!-- START OF FORM -->
+
+                <div id="form-content">
+					  <div class="panel-body">
+						<% if is_conversation %>
+							<%= render 'conversations/form' %>
+						<% else %>
+								
+	
+						<%= render partial: 'conversations/conversation', collection: messages, locals: { boxname: boxname } %>
+						<% end %>
+                 </div>  
+       </div>   
+  </div>  
+
+
+
+           
+
+
+
+
+
+
+
+

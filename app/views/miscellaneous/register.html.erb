@@ -1,0 +1,156 @@
+<% content_for :html_id, "extr-page" %>
+<% content_for :body_class, "animated fadeInDown" %>
+<% content_for :top_right do %>
+<span id="extr-page-header-space">
+  <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Already registered?</span>
+    <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-danger' %>
+  </span>
+<% end %>
+<!-- MAIN CONTENT -->
+<div id="content" class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+      <h1 class="txt-color-red login-header-big"></h1>
+      <div class="hero">
+
+
+      </div>
+
+
+    </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+      <div class="well no-padding">
+	  <%= simple_form_for(@user, html: { method: :post, class: "smart-form client-form" }) do |f| %>
+        
+	     <header>
+          Create Account
+        </header>
+        <fieldset>
+		
+        <%= f.input :first_name, input_html: { class: "required"}, :autofocus => true %>
+        <%= f.input :last_name, input_html: { class: "required"} %>
+        <%= f.input :email, input_html: { class: "required"} %>
+        <%= f.input :password, input_html: { class: "required"}, autocomplete: "off" %>
+
+
+
+
+        </fieldset>
+        <footer>
+          <%= f.button :submit, "Register", class: "btn btn-primary" %>
+        </footer>
+        <% end %>
+
+
+      </div>
+
+
+
+    </div>
+</div>
+</div>
+
+<% content_for :scripts do %>
+        <script type="text/javascript">
+          runAllForms();
+
+          // Model i agree button
+          $("#i-agree").click(function(){
+            $this=$("#terms");
+            if($this.checked) {
+              $('#myModal').modal('toggle');
+            } else {
+              $this.prop('checked', true);
+              $('#myModal').modal('toggle');
+            }
+          });
+
+          // Validation
+          $(function() {
+            // Validation
+            $("#smart-form-register").validate({
+
+              // Rules for form validation
+              rules : {
+                username : {
+                  required : true
+                },
+                email : {
+                  required : true,
+                  email : true
+                },
+                password : {
+                  required : true,
+                  minlength : 3,
+                  maxlength : 20
+                },
+                passwordConfirm : {
+                  required : true,
+                  minlength : 3,
+                  maxlength : 20,
+                  equalTo : '#password'
+                },
+                firstname : {
+                  required : true
+                },
+                lastname : {
+                  required : true
+                },
+                gender : {
+                  required : true
+                },
+                terms : {
+                  required : true
+                }
+              },
+
+              // Messages for form validation
+              messages : {
+                login : {
+                  required : 'Please enter your login'
+                },
+                email : {
+                  required : 'Please enter your email address',
+                  email : 'Please enter a VALID email address'
+                },
+                password : {
+                  required : 'Please enter your password'
+                },
+                passwordConfirm : {
+                  required : 'Please enter your password one more time',
+                  equalTo : 'Please enter the same password as above'
+                },
+                firstname : {
+                  required : 'Please select your first name'
+                },
+                lastname : {
+                  required : 'Please select your last name'
+                },
+                gender : {
+                  required : 'Please select your gender'
+                },
+                terms : {
+                  required : 'You must agree with Terms and Conditions'
+                }
+              },
+
+              // Ajax form submition
+              submitHandler : function(form) {
+                $(form).ajaxSubmit({
+                  success : function() {
+                    $("#smart-form-register").addClass('submited');
+                  }
+                });
+              },
+
+              // Do not change code below
+              errorPlacement : function(error, element) {
+                error.insertAfter(element.parent());
+              }
+            });
+
+          });
+        </script>
+<% end %>

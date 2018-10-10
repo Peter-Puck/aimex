@@ -1,0 +1,21 @@
+  <div>
+    <ul class="notification-body">
+<% @receipts.each do |receipt| %>
+    <% message = receipt.message %>
+
+		<li>
+			<span>
+				<a class="msg">
+				   <%= image_tag message.sender.photo.url(:thumb), alt: '', class: 'air air-top-left margin-top-5', width: '40', height: '40' %>
+				        <span class="from"><%= message.sender.full_name_first_last %></span>
+						<!--span class="subject"><%= message.subject %></span-->
+						<time><%=  message.created_at.strftime("%m/%d/%Y at %I:%M%p") %></time>
+	                    <span class="msg-body"><%= message.body %></span>	  
+				</a>
+			</span>
+       </li> 
+
+<% end %>
+   </ul>
+
+   </div>

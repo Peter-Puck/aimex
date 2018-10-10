@@ -1,0 +1,19 @@
+$("#form-content").html("<%= escape_javascript(render 'form') %>");
+$("#form-header-title").html("<%= t(:singular, scope: 'simple_form.labels.user') %>: <%= @user.full_name_first_last %>");
+
+runAllForms();
+
+$.smallBox({
+	title : "<%= t(:edit_record, scope: 'simple_form.labels.user') %>",
+	content : "<%= @action_message %>",
+	color : "#4c4f53",
+	iconSmall : "fa fa-pencil-square-o bounce animated",
+	timeout : 2000,
+	sound: false
+});
+
+$("#sub-modal").html("<%= escape_javascript(render 'delete') %>");
+
+
+
+

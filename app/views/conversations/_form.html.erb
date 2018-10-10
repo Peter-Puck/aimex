@@ -1,0 +1,36 @@
+<%= form_for :conversation,  url: :conversations, html: { class: "" }, remote:true do |f| %>
+<div>
+   <div class="compose-body">
+      <div class="inbox-info-bar" align="center">
+         <div class="form-group" height="22px" align="center">
+            <label align="center" style="width:78px"><strong><%= f.label :recipients %></strong></label><br>
+            <div align="center">
+               <%= f.select(:recipients, current_user.my_recipients.collect  {|p| [ p.full_name, p.id ] }.sort, {}, {placeholder: t(:select_recipients, scope: 'simple_form.placeholders.reminder'),class: "select2 form", multiple: true, :style => "background-color:#E9E9E9; min-width:200px; color:black"})%>
+
+			</div>
+         </div>
+      </div>
+      <div class="inbox-info-bar">
+         <div class="form-group">
+            <!--label class="control-label col-md-1"><strong><%= f.label :subject %></strong></label-->
+            <div align="center">
+               <%= f.text_field :subject, placeholder: t(:message_subject), class: "form-control", style: "height:18px;width:270px" %>
+            </div>
+         </div>
+      </div>
+      <div class="inbox-info-bar">
+         <div class="form-group">
+            <!--label class="control-label col-md-1"><strong><%= f.label :message %></strong></label-->
+            <div id="emailbody" align="center">
+               <%= f.text_area :body, class: 'form-control', style: 'width:270px',placeholder:  t(:mail_message_placeholder) , rows: 3  %>
+            </div>
+            <div align="center" style="margin-top:7px !important">
+               <%= button_tag( :class => "btn btn-success") do %>
+               <i class="fa fa-send"> </i> <%= t(:send_message, scope: 'buttons')%>
+               <% end %>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<% end %>

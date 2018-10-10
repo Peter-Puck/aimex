@@ -1,0 +1,7 @@
+﻿<% conversation.participants.uniq.each do |participant| %>
+<% unless participant == current_user %>
+<p><%= image_tag participant.photo.url(:thumb), alt: '',  width: '20', height: '20' %>
+<%=participant.full_name_first_last %></p>
+
+<% end %>
+<% end %>

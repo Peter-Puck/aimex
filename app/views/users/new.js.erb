@@ -1,0 +1,15 @@
+$("#form-content").html("<%= escape_javascript(render 'form') %>");
+$("#form-header-title").html("<%= t(:singular, scope: 'simple_form.labels.user') %>: <%= t(:new_record) %>");
+
+
+runAllForms();
+
+$.smallBox({
+	title : "<%= t(:add_record, scope: 'simple_form.labels.user') %>",
+	content : "<%= @action_message %>",
+	color : "#71843f",
+	iconSmall : "fa fa-plus bounce animated",
+	timeout : 2000
+});
+
+

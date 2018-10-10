@@ -1,0 +1,63 @@
+<div>
+   <ul class="notification-body">
+      <li>
+         <% if conversation.is_unread?(current_user) %>
+           <% if conversation.last_sender != nil %>
+             <span class="unread">
+               <a href="javascript:void(0);" class="msg"  onclick="SetNotification('<%= conversation_path(conversation)  %>');">
+               <span class="from">From: <%= conversation.last_sender.full_name_first_last %></span>
+               <span class="subject">Subject: <%= conversation.subject %></span>
+               <time><%=  conversation.messages.last.created_at.strftime("%m/%d/%Y at %I:%M%p") %></time>  
+               </a>
+             </span>
+           <% else %>
+             <span class="unread">
+               <a href="javascript:void(0);" class="msg"  onclick="SetNotification('<%= conversation_path(conversation)  %>');">
+               <span class="from">From: Unknown</span>
+               <span class="subject">Subject: <%= conversation.subject %></span>
+               <time><%=  conversation.messages.last.created_at.strftime("%m/%d/%Y at %I:%M%p") %></time>  
+               </a>
+             </span>
+           <% end %>  
+         <% else %>
+         <% if boxname =="sent" %>
+         <span>
+            <a href="javascript:void(0);" class="msg"  onclick="SetNotification('<%= conversation_path(conversation)  %>');">
+               <span class="to">
+               To:<% conversation.recipients.uniq.each do |recipient| %>             
+               <% unless recipient == current_user %>
+               <%=recipient.full_name_first_last %>              
+               <% end %>&nbsp;<% end %></span>
+               <div style="font-size: 9px;font-weight: normal;color: #058dc7;">
+                  <%=  conversation.messages.last.created_at.strftime("%m/%d/%Y at %I:%M%p") %>
+               </div>
+               <span class="subject">
+               Subject: <%= conversation.subject %>
+               </span>
+            </a>
+         </span>
+         <% else %>
+         <% if conversation.last_sender != nil %>
+             <span>
+               <a href="javascript:void(0);" class="msg"  onclick="SetNotification('<%= conversation_path(conversation)  %>');">
+               <span class="from">From: <%= conversation.last_sender.full_name_first_last %></span>
+               <span class="subject">
+               Subject: <%= conversation.subject %></span>
+               <time><%=  conversation.messages.last.created_at.strftime("%m/%d/%Y at %I:%M%p") %></time>  
+               </a>
+             </span>
+           <% else %>
+             <span>
+               <a href="javascript:void(0);" class="msg"  onclick="SetNotification('<%= conversation_path(conversation)  %>');">
+               <span class="from">From: Unknown</span>
+               <span class="subject">
+               Subject: <%= conversation.subject %></span>
+               <time><%=  conversation.messages.last.created_at.strftime("%m/%d/%Y at %I:%M%p") %></time>  
+               </a>
+             </span>
+           <% end %>   
+         <% end %>      
+         <% end %>
+      </li>
+   </ul>
+</div>

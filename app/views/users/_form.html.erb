@@ -1,0 +1,90 @@
+<% content_for :ribbon do %>
+<!-- RIBBON -->
+<div id="ribbon">
+
+				<span class="ribbon-button-alignment">
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span>
+				</span>
+
+  <!-- breadcrumb -->
+  <ol class="breadcrumb">
+    <li>Home</li><li>Users</li>
+  </ol>
+  <!-- end breadcrumb -->
+
+  <!-- You can also add more buttons to the
+  ribbon for further usability
+
+  Example below:
+
+  <span class="ribbon-button-alignment pull-right">
+  <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+  <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+  <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+  </span> -->
+
+</div>
+<!-- END RIBBON -->
+<% end %>
+
+
+
+<%= simple_form_for @user, html: { autocomplete: 'off', class: "smart-form" }, authenticity_token: true, remote: true do |f| %>
+	
+	
+	<fieldset>
+			<% if @user.present? && @user.id.present? %>
+            <%= link_to image_tag(@user.avatar.url(:thumb), id: "user_thumbnail", class: "thumbnail", title: (@user.avatar.exists? ? @user : t(:no_avatar, scope: "simple_form.labels.defaults"))), avatar_user_path(@user), remote: true %>
+          <% else %>
+            <%= image_tag(@user.avatar.url(:thumb), id: "user_thumbnail", class: "thumbnail", title: (@user.avatar.exists? ? @user : t(:save_first, scope: "simple_form.labels.defaults"))) %>
+          <% end %>
+
+		  	  </br>
+
+      <div class="row">
+        <%= f.input :last_name, wrapper_html: { class: "col col-6" }, input_html: { class: "required"}, :autofocus => true %>
+        <%= f.input :first_name, wrapper_html: { class: "col col-6" }, input_html: { class: "required"} %>
+      </div>
+
+	   <div class="row">
+        <%= f.input :email, wrapper_html: { class: "col col-6" }, input_html: { class: "required"}, :autofocus => true %>
+		<%= f.input :enabled, as: :smartform_checkbox, wrapper_html: { class: "col col-6" } %>
+      </div>
+
+
+
+
+
+      <div class="row">
+        <%= f.input :password, wrapper_html: { class: "col col-6" }, input_html: { class: "required" }, :autocomplete => :off  %>
+		<% if (current_user.is_admin == true) %>
+			<%= f.input :is_admin, as: :smartform_checkbox, wrapper_html: { class: "col col-6" } %>
+		<% end %>
+      </div>
+    </fieldset>
+	<footer>
+
+
+		  		 <% if @user.present? and @user.id.present? %>
+		        <%= link_to raw('<i class="fa fa-remove"></i> <span class="hidden-xs">' + t(:delete_button, scope: "buttons") + " " + t(:singular, scope: 'simple_form.labels.user')), user_path(@user), data: { method: :delete, :confirm => "Are you sure?" }, :class => 'btn btn-danger tab-button pull-right' %>
+	     <% end %>
+
+	   <%= link_to raw('<i class="fa fa-plus"></i> ') + t(:add_record, scope: "simple_form.labels.user"), new_user_path(user_id: @user.id), remote: true, class: "btn btn-success tab-button top-buffer" %>
+
+
+
+
+		 	  <%= button_tag(type: 'submit', class: "btn btn-primary tab-button", data: { disable_with: "#{t(:ajax_submit, scope: "buttons")}" }) do %>
+		<i class="fa fa-save"></i> <span class="hidden-xs"><%= t(:save_button, scope: "buttons" ) %></span>
+	  <% end %>
+
+
+		 </footer>
+
+		 <%= link_to "Call Action", call_action_user_path(current_user.id) %>
+
+<%end%>
+
+<!-- END OF FORM --> 

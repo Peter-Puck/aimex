@@ -1,0 +1,55 @@
+<% currently_at "conversations" %>
+<div>
+   <div  align="left"></div>
+   <div id="form-content">
+      <div >
+         <div class="panel-header" style="padding: 10px 15px;">
+            <table width="100%">
+               <tr>
+                  <td>
+                     <b>Participants: </b>  <%= render 'conversations/participants', conversation: @conversation %>
+                  </td>
+                  <td align="right">
+                     <% if conversation.is_trashed?(current_user) %>
+                     <%= link_to untrash_conversation_path(conversation), remote:true, class: 'btn btn-info btn-xs', method: :post, data: {confirm: t(:button_confirm, scope: "buttons"), ok: t(:yes_button, scope: "buttons"), cancel: t(:cancel, scope: "buttons")} do %>
+                     <i class="fa fa-undo"></i> <!--%= t(:untrash_message, scope: 'buttons')%-->
+                     <% end %>
+                     <% else %>
+                     <%= link_to trash_conversation_path(conversation), remote:true, class: 'btn btn-danger btn-xs', method: :post, data: {confirm: t(:button_confirm, scope: "buttons"), ok: t(:yes_button, scope: "buttons"), cancel: t(:cancel, scope: "buttons")} do %>
+                     <i class="fa fa-trash"></i> <!--%= t(:move_to_trash, scope: 'buttons')%-->
+                     <% end %>
+                     <% end %>
+                  </td>
+               </tr>
+            </table>
+         </div>
+         <div class="panel-header" style="padding: 10px 15px;">
+            <p><b>Subject: </b><%= conversation.subject  %> </p>
+         </div>
+         <div  align="left">
+            <ul class="notification-body">
+               <span>
+               <%= render partial: 'messages', remote: true %>
+               </span>
+               <body>
+                  <div class="panel-footer">
+
+                     <!-- Reply Form -->
+                     <%= form_for :message, url: reply_conversation_path(conversation), remote:true do |f| %>
+                     <div  align="center">
+                        <%= f.text_area :body, placeholder: t(:reply_message), style: 'width:240px', class: 'form-control', rows: 3 %>
+                        <div align="center" style="margin-top:7px !important">
+                           <%= button_tag( :class => "btn btn-success") do %>
+                           <i class="fa fa-send"> </i> <%= t(:reply_message)%>
+                           <% end %>
+                        </div>
+                     </div>
+					 <% end %>
+            
+                  </div>
+               </body>
+            </ul >
+         </div>
+      </div>
+   </div>
+</div>

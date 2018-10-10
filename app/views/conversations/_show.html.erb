@@ -1,0 +1,157 @@
+<% currently_at "conversations" %>
+
+
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+  <!-- row -->
+  <div class="row">
+
+    <!-- NEW WIDGET START -->
+    <article class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+
+
+      <!-- Widget ID (each widget will need unique ID)-->
+      <div class="jarviswidget jarviswidget-color-darken" id="mailbox-form" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false">
+
+        <header>
+          <span class="widget-icon">
+            <i class="fa fa-envelope"></i>
+          </span>
+          <h2 id="form-header-title">
+            <%= t(:singular, scope: "simple_form.labels.mailbox") %>
+          </h2>
+        </header>
+        <!-- widget div-->
+        <div>
+
+		
+
+
+          <!-- widget edit box -->
+          <div class="jarviswidget-editbox">
+            <!-- This area used as dropdown edit box -->
+
+          </div>
+          <!-- end widget edit box -->
+
+          <!-- widget content -->
+          <div class="widget-body no-padding">
+          <div class="well">
+              <div class="bottom-buffer">
+                <div class="bottom-buffer">
+                  <!--      <%= render 'layouts/create', save_path: new_conversation_path, scope: "simple_form.labels.conversation" %> -->
+                  <%= link_to "Compose", new_conversation_path, class: "btn btn-success"%>
+                </div>
+
+                <!-- START OF FORM -->
+
+                <div id="form-content">
+                  <%= render "mailbox/folders" %>
+                </div>
+
+
+              </div>
+            </div>
+            <!-- end widget div -->
+          </div>
+        </div>
+      </div>
+      <!-- end widget -->
+    </article>
+    <!-- WIDGET END -->
+
+
+   <!-- NEW WIDGET START -->
+    <article class="col-xs-18 col-sm-18 col-md-18 col-lg-9">
+
+      <!-- Widget ID (each widget will need unique ID)-->
+      <div class="jarviswidget jarviswidget-color-darken" id="conversation-form" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false">
+
+        <header>
+          <span class="widget-icon">
+            <i class="fa fa-users"></i>
+          </span>
+          <h2 id="form-header-title">
+            <%= t(:plural, scope: "simple_form.labels.conversation") %>
+          </h2>
+        </header>
+        <!-- widget div-->
+        <div>
+			
+          <!-- end widget edit box -->
+
+          <!-- widget content -->
+          <div class="widget-body no-padding">
+            <div class="well">
+              <div class="bottom-buffer">
+                <!-- START OF FORM -->
+                
+
+                  <p>
+				<%= render 'conversations/participants', conversation: @conversation %>
+			</p>
+                    
+            
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="col-md-6 text-right" style="width:100%">
+                                        <% if conversation.is_trashed?(current_user) %>
+                                                      <%= link_to t(:untrash_message, scope: 'modules'), untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
+                                        <% else %>
+                                                      <%= link_to t(:move_to_trash, scope: 'modules'), trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
+                                        data: {confirm: 'Are you sure?'} %>
+                                        <% end %>
+                        </div>
+                        <br></br>
+                             <%= render partial: 'messages' %>
+                      </div>
+                      <div class="panel-footer">
+                        <!-- Reply Form -->
+                        <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
+                        <div class="form-group">
+                          <%= f.text_area :body, placeholder: t(:reply_message, scope: 'modules'), rows: 4, class: "form-control" %>
+                        </div>
+                        <%= f.submit t(:reply_message, scope: 'modules'), class: 'btn btn-danger pull-right' %>
+						<br></br>
+                        <% end %>
+
+                      </div>
+                    </div>
+           
+        
+
+
+              </div>
+            </div>
+            <!-- end widget div -->
+          </div>
+        </div>
+      </div>
+      <!-- end widget -->
+    </article>
+    <!-- WIDGET END -->
+  </div>
+  
+  
+  
+  <!-- end row -->
+</section>
+<!-- end widget grid -->
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+    

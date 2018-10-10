@@ -1,0 +1,15 @@
+﻿ 
+ 
+ $.smallBox({
+	title : "<%= t(:mailbox, scope: 'modules') %>",
+	content : "<%= t(:sent_message) %>",
+	color : "#4c4f53",
+	iconSmall : "fa fa-envelope-o bounce animated",
+	timeout : 2000,
+	sound: false
+});
+ 
+$('#dt_incidents').DataTable().ajax.reload();
+
+loadURL('<%= conversation_path(conversation)  %>',  $(".ajax-notifications"));
+

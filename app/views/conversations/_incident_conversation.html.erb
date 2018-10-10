@@ -1,0 +1,9 @@
+<div id ="incidentConversationDiv" value="empty">
+  <script>
+    $(document).ready(function(){
+    $('#incidentConversationDiv').load('<%= conversation_path(my_conv_id)  %>');
+        $('#incidentConversationDiv').attr('value', '<%= conversation_path(my_conv_id)  %>');
+        });
+  </script>
+</div>
+

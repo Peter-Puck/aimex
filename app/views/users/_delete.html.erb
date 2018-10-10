@@ -1,0 +1,15 @@
+<div class="modal-dialog">
+	<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h6 id="modal-formLabel"><%= t(:confirm_delete) %></h6>
+    </div>
+    <div class="modal-body">
+      <p><%= t(:delete, scope: "simple_form.labels.user").html_safe %></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" data-dismiss="modal"><%= t(:cancel_button, scope: "buttons") %></button>
+      <%= link_to t(:delete, scope: "buttons"), user_path(@user), method: :delete, remote: true, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

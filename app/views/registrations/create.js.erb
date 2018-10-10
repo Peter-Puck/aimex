@@ -1,0 +1,29 @@
+
+$("#form-header-title").html("<%= t(:singular, scope: 'simple_form.labels.user') %>: <%= @user.full_name_first_last %>");
+
+
+runAllForms();
+
+<% if @user.errors.any? %>
+	$.smallBox({
+		title : "<%= t(:error) %>",
+		content : "<%= @action_message %>",
+		color : "#a90329",
+		iconSmall : "fa fa-thumbs-o-down bounce animated",
+		timeout : 4000
+	});	
+<% else %>
+  var oTable = $('#dt_users').DataTable();
+	var ouser = <%= raw(render 'dt_show.json') %>;
+	oTable.row.add(ouser).draw().node();	
+
+	$.smallBox({
+		title : "<%= t(:success) %>",
+		content : "<%= @action_message %>",
+		color : "#296191",
+		iconSmall : "fa fa-thumbs-up bounce animated",
+		timeout : 2000
+	});
+<% end %>
+
+

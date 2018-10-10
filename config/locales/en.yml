@@ -1,0 +1,166 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  application: "KATS Platinum"
+  copyright: "KATS Platinum by Eden Consulting"
+  confirm: 'Are You Sure?'
+  error: 'Error'
+  forgot_password: 'Forgot your password?'
+  find_out_more: 'Find out More'
+  delete_success: 'Record Deleted'
+  forgot_desc: 'Sorry you are having trouble with your KATS account. Please enter your email address to receive instructions on how to reset your password.'  
+  login_desc: 'The K9 Activity Tracking System is a dynamic record keeping program designed specifically for police K9 operations, training and deployments, designed to protect officers and agencies from potential liability.'
+  unlock_desc: 'If you have locked out your KATS account, please enter in your email address to receive instructions on how to resolve this issue.'
+  online_help: 'Online Help'
+  new_record: 'NEW RECORD'  
+  resend_unlock_instructions: 'Resend Unlock Instructions'
+  send_password_instructions: 'Send Password Reset Instructions'
+  success: 'Success'
+  save_record_first: 'You must save this record before completing this form.'
+  assign_team_first: 'An assigned team is required before completing this form.'
+  sign_in: "Sign In"
+  sign_out: "Sign Out"
+  unlock_instructions: 'Resend unlock instructions'
+  yes_text: "Yes"
+  no_text: "No"
+  warning: "Warning"
+  requirements: "Requirements Not Met"
+  not_found: "Not Found"
+  mail_message_placeholder: 'Type your message here.'
+  message_subject: "Subject"
+  reply_message: "Reply"
+  sent_message: "Message Sent"
+  trashed_message: "Message Trashed"
+  untrashed_message: "Message Untrashed"
+  trash_emptied_message: "Trash Emptied"
+  inbox_emptied_message: "Inbox Trashed"
+  sent_emptied_message: "Sent Trashed"
+  need_account: "Need an Account?"
+  register: "Register & Subscribe"
+  data_logout_msg: "You can improve your security further after logging out by closing this opened browser"
+  date:
+    formats:
+      default: "%Y-%m-%d"
+  mailboxer:
+    message_mailer:
+      subject_new: 'KATS Notification: %{subject}'
+      subject_reply: 'KATS Notification RE: %{subject}'
+  modules:
+    home: "Home"
+    reports: "Reports"
+    tools: "Tools"
+    incidents: "Incidents"
+    two_factor_confirmations: "Login Confirmation"
+    tats_search: "TATS Search"
+    reminders: "Reminders"
+    snippets: "Snippets"
+    security_profiles: "Security Profiles"
+    administration: "Admin"
+    agencies: "Agencies"
+    training_kits: "Training Kits"
+    gps_exports: "GPS Exports"
+    training: "Training"
+    trainings: "Training"
+    supervisors: "Supervisors"
+    security_groups: "Security Profiles"
+    training_collaborations: "Collaboration"
+    canines: "Canines"
+    contacts: "Contacts"
+    costs: "Costs"
+    costs: "Expenses"
+    medical_records: "Veterinary"
+    users: "Users"
+    lookup_tables: "Tables"
+    reports: "Reports"
+    teams: "Teams"
+    mailbox: "Messages"
+    agency: "Agency"
+    mailboxer_groups: "Training Groups"
+    setup_wizards: "Setup Wizard"
+    licenses: "Licenses"
+  two_factor_confirmations:
+    home: "Home"
+    reports: "Reports"
+    tools: "Tools"
+    incidents: "Incidents"
+    tats_search: "TATS Search"
+    reminders: "Reminders"
+    snippets: "Snippets"
+    security_profiles: "Security Profiles"
+    administration: "Admin"
+    agencies: "Agencies"
+    training_kits: "Training Kits"
+    training: "Training"
+    trainings: "Training"
+    supervisors: "Supervisors"
+    security_groups: "Security Profiles"
+    training_collaborations: "Collaboration"
+    canines: "Canines"
+    contacts: "Contacts"
+    costs: "Costs"
+    costs: "Expenses"
+    medical_records: "Veterinary"
+    users: "Users"
+    lookup_tables: "Tables"
+    reports: "Reports"
+    teams: "Teams"
+    mailbox: "Messages"
+    agency: "Agency"
+    mailboxer_groups: "Training Groups"
+    setup_wizards: "Setup Wizard"
+    licenses: "Licenses"
+  buttons: 
+    add_button: "Add"
+    cancel_button: "Cancel"
+    close_button: "Close"
+    delete_button: "Delete"
+    sign_in_as: "Sign In As"
+    reports_button: ""
+    save_button: "Save"
+    submit_and_save_button: "Send Notification"
+    return_for_followup: "Return for Followup"
+    return_for_supervisor_followup: "Return to Supervisor"
+    approve_and_save_button: "Approve"
+    unlock_and_save_button: "Unlock"
+    save_and_notify_button: "Submit to Supervisor"
+    ajax_submit: "Please Wait...."
+    pay_now: "Pay Now"
+    continue_trial: "Continue Free Trial"
+    continue_to_kats: "Continue to KATS"
+    update_and_pay: "Credit Card Payment"
+    ajax_submit_and_send: "Sending...."
+    ajax_submit_and_approve: "Approving...."
+    ajax_submit_and_unlock: "Unlocking...."
+    button_confirm: 'Are you sure?'
+    empty_trash_button: 'Empty Trash'
+    empty_inbox_button: 'Empty Inbox'
+    empty_sent_button: 'Empty Sent'
+    send_message: "Send Message"
+    compose_message: "Compose"
+    move_to_trash: "Move to Trash"
+    confirm_delete: "Untrash"
+    ok: "OK"
+    cancel: "Cancel"
+    yes_button: "Yes"
+    no_button: "No"
+    untrash_message: "Untrash"
+    update_and_request_po: "Request P.O."

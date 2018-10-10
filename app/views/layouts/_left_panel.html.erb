@@ -1,0 +1,68 @@
+<aside id="left-panel">
+
+  <!-- User info -->
+  <div class="login-info">
+				<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
+
+
+          <a href="<%= edit_user_path(current_user.id) %>" class="dropdown-toggle no-margin userdropdown" title="My Profile">
+            <% if user_signed_in? %>
+							  <img src="<%= image_path(current_user.avatar(:thumb) ) %>" alt="me" class="online" />
+                  <span>
+                    <%= current_user.full_name_first_last %>
+                  </span>
+            <%end %>
+						</a>
+
+
+          <!--<a href="javascript:void(0);" >
+            <img src="<%= image_path(current_user.avatar(:thumb) ) %>" alt="me" class="online" />
+            <span>
+              <%= current_user.full_name_first_last %>
+              </span>
+ 
+          </a>-->
+
+				</span>
+  </div>
+  <!-- end user info -->
+
+  <!-- NAVIGATION : This navigation is also responsive-->
+  <nav>
+    <!--
+    NOTE: Notice the gaps after each icon usage <i></i>..
+    Please note that these links work a bit different than
+    traditional href="" links. See documentation for details.
+    -->
+
+    <ul>
+      <%= left_menu %>
+      <li class="chat-users top-menu-invisible <%= 'open' if current_page?(smart_chat_api_path)%>">
+        <a href="#">
+          <i class="fa fa-lg fa-fw fa-comment-o"><em class="bg-color-pink flash animated">!</em></i> <span class="menu-item-parent"><%= _('Smart Chat API') %> <sup><%= _('beta') %></sup></span>
+          <% if current_page?(smart_chat_api_path) %>
+            <b class="collapse-sign"><em class="fa fa-minus-square-o"></em></b>
+          <% else %>
+            <b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b>
+          <% end %>
+        </a>
+        <ul style="<%= 'display: block' if current_page?(smart_chat_api_path)%>">
+          <li>
+            <!-- DISPLAY USERS -->
+            <div class="display-users">
+
+
+            </div>
+            <!-- END DISPLAY USERS -->
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+
+			<span class="minifyme" data-action="minifyMenu">
+				<i class="fa fa-arrow-circle-left hit"></i>
+			</span>
+
+</aside>

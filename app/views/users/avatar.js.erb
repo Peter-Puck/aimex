@@ -1,0 +1,3 @@
+$("#main-modal").html("<%= escape_javascript(render 'avatar') %>");
+$("#main-modal").modal({show: "true", keyboard: "false"});
+$("#sub-modal").html("<%= escape_javascript(render 'delete_avatar') %>");
